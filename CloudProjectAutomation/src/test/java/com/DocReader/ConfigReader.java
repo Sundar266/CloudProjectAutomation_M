@@ -11,7 +11,9 @@ public class ConfigReader {
 	Properties prop;
 
 	public ConfigReader() {
-		String configPath = "C:\\Users\\2126765\\eclipse-workspace\\CloudProjectAutomation\\src\\test\\java\\com\\DataDocs\\Config.properties";
+		String configPath = "C:\\Users\\2126765\\git\\CloudProjectAutomation_M\\CloudProjectAutomation\\src\\test\\java\\com\\DataDocs\\Config.properties";
+		//C:\Users\2126765\git\CloudProjectAutomation_M\CloudProjectAutomation\src\test\java\com\DataDocs\Config.properties
+		//C:\\Users\\2126765\\eclipse-workspace\\CloudProjectAutomation\\src\\test\\java\\com\\DataDocs\\Config.properties
 		prop = new Properties();
 		try {
 			BufferedReader bReader = new BufferedReader(new FileReader(configPath));
