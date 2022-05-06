@@ -139,6 +139,7 @@ public class TC003 {
 	
 	@Test(priority = 5, dataProvider = "data-provider")
 	public void AddDataInTable(String FirstName ,String LastName, String Age, String Email, String Salary, String Department) throws Exception {
+		System.out.println("********Adding values to the Web table*******");
 		WebElement addbtn = driver.findElement(By.xpath("//button[@id='addNewRecordButton']"));
 		js.executeScript("arguments[0].scrollIntoView();", addbtn);
 		addbtn.click();
@@ -152,11 +153,12 @@ public class TC003 {
 		driver.findElement(By.xpath("//button[@id='submit']")).click();
 		Thread.sleep(1000);
 		List<WebElement> NewRowNos = driver.findElements(By.xpath("//div[@class='ReactTable -striped -highlight']/descendant::div[@class='rt-tbody']/div"));
-		System.out.println("Number of Rows before addition:\t" +NewRowNos.size());
+		System.out.println("Number of Rows after addition:\t" +NewRowNos.size());
 	}
 
-	@AfterMethod
+	@AfterMethod(lastTimeOnly = true)
 	public void reload() {
+		
 		driver.navigate().refresh();
 	}
 
