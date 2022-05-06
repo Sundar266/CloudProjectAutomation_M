@@ -61,7 +61,9 @@ public class TC003 {
 				if(rbtns.get(i).isEnabled()) {
 					js.executeScript("arguments[0].click()", rbtns.get(i));
 					Thread.sleep(2000);
-					System.out.println("And the text for your radio button is:\t"+rbtns.get(i).getText());
+					WebElement text = driver.findElement(By.xpath("//p[@class='mt-3']"));
+					js.executeScript("arguments[0].scrollIntoView();" , text);
+					System.out.println("And the text for your radio button is:\t"+text.getText());
 				}else{
 					System.out.println("Element has been disabled");
 				}
@@ -121,8 +123,8 @@ public class TC003 {
 		return arr;
 	}
 	
-	@Test(priority = 4, dataProvider = "data-provider" )
-	public void verifytable(String FirstName ,String LastName, String Age, String Email, String Salary, String Department) throws Exception {
+	@Test(priority = 4)
+	public void verifytable() throws Exception {
 		System.out.println("------------Verify WebTable------------");
 		driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[1]")).click();
 		WebElement WTable = driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[1]/div/ul/li[@id='item-3']"));
@@ -133,6 +135,10 @@ public class TC003 {
 		assertEquals(colNos.size(), 7);
 		List<WebElement> initialRowNos = driver.findElements(By.xpath("//div[@class='ReactTable -striped -highlight']/descendant::div[@class='rt-tbody']/div"));
 		System.out.println("Number of Rows before addition:\t" +initialRowNos.size());
+	}
+	
+	@Test(priority = 5, dataProvider = "data-provider")
+	public void AddDataInTable(String FirstName ,String LastName, String Age, String Email, String Salary, String Department) throws Exception {
 		WebElement addbtn = driver.findElement(By.xpath("//button[@id='addNewRecordButton']"));
 		js.executeScript("arguments[0].scrollIntoView();", addbtn);
 		addbtn.click();
@@ -144,6 +150,9 @@ public class TC003 {
 		driver.findElement(By.xpath("//input[@placeholder='Salary']")).sendKeys(Salary);
 		driver.findElement(By.xpath("//input[@placeholder='Department']")).sendKeys(Department);
 		driver.findElement(By.xpath("//button[@id='submit']")).click();
+		Thread.sleep(1000);
+		List<WebElement> NewRowNos = driver.findElements(By.xpath("//div[@class='ReactTable -striped -highlight']/descendant::div[@class='rt-tbody']/div"));
+		System.out.println("Number of Rows before addition:\t" +NewRowNos.size());
 	}
 
 	@AfterMethod
