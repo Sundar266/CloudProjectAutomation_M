@@ -6,7 +6,7 @@
       <class name="com.TCs.TC003">
         <methods>
           <include name="tearDown"/>
-          <include name="verifyLinks"/>
+          <include name="verifytable"/>
           <include name="reload"/>
           <include name="reachElementsMenu"/>
         </methods>
