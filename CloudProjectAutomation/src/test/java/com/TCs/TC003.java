@@ -45,7 +45,7 @@ public class TC003 {
 		driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[1]/div/ul/li[@id='item-0']")).click();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, enabled=false)
 	public void verifyRadioBtns() throws Exception {
 		System.out.println("------------Verify Radio Buttons-------------");
 		driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[1]")).click();
@@ -71,11 +71,7 @@ public class TC003 {
 		}
 	}
 
-	public void verifyCheckBox() {
-
-	}
-
-	@Test(priority = 3)
+	@Test(priority = 3, enabled=false)
 	public void verifyButtons() throws InterruptedException {
 		System.out.println("-------------Verify Buttons--------------");
 		driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[1]")).click();
@@ -104,7 +100,7 @@ public class TC003 {
 		}
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, enabled=false)
 	public void verifyLinks() throws Exception {
 		System.out.println("------------Verify Links------------");
 		driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[1]")).click();
@@ -116,13 +112,13 @@ public class TC003 {
 		BrokenLinkVerify linkVerify = new BrokenLinkVerify();
 		linkVerify.linksverify(driver, XPath);		
 	}
-	
+
 	@DataProvider(name="data-provider")
 	public Object[][] myDataProvider() throws Exception{
 		Object[][] arr = new DataProviderClass().getExcelData(path, "WebTable", 0);
 		return arr;
 	}
-	
+
 	@Test(priority = 4)
 	public void verifytable() throws Exception {
 		System.out.println("------------Verify WebTable------------");
@@ -133,10 +129,8 @@ public class TC003 {
 		Thread.sleep(7000);
 		List<WebElement> colNos = driver.findElements(By.xpath("//div[@class='ReactTable -striped -highlight']/descendant::div[@class='rt-tr']/div"));
 		assertEquals(colNos.size(), 7);
-		List<WebElement> initialRowNos = driver.findElements(By.xpath("//div[@class='ReactTable -striped -highlight']/descendant::div[@class='rt-tbody']/div"));
-		System.out.println("Number of Rows before addition:\t" +initialRowNos.size());
 	}
-	
+
 	@Test(priority = 5, dataProvider = "data-provider")
 	public void AddDataInTable(String FirstName ,String LastName, String Age, String Email, String Salary, String Department) throws Exception {
 		System.out.println("********Adding values to the Web table*******");
@@ -158,7 +152,7 @@ public class TC003 {
 
 	@AfterMethod(lastTimeOnly = true)
 	public void reload() {
-		
+
 		driver.navigate().refresh();
 	}
 
