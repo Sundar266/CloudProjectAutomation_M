@@ -1,105 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="3" total="6" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-05-10T19:30:25 IST" name="Default suite" finished-at="2022-05-10T19:30:57 IST" duration-ms="31991">
+  <suite started-at="2022-05-12T20:20:37 IST" name="Default suite" finished-at="2022-05-12T20:22:15 IST" duration-ms="98187">
     <groups>
     </groups>
-    <test started-at="2022-05-10T19:30:25 IST" name="Default test" finished-at="2022-05-10T19:30:57 IST" duration-ms="31991">
-      <class name="com.TCs.TC003">
-        <test-method is-config="true" signature="reachElementsMenu()[pri:0, instance:com.TCs.TC003@791f145a]" started-at="2022-05-10T19:30:25 IST" name="reachElementsMenu" finished-at="2022-05-10T19:30:41 IST" duration-ms="15997" status="PASS">
+    <test started-at="2022-05-12T20:20:37 IST" name="Default test" finished-at="2022-05-12T20:22:15 IST" duration-ms="98187">
+      <class name="com.TCs.TC004">
+        <test-method is-config="true" signature="reachElementsMenu()[pri:0, instance:com.TCs.TC004@60bd273d]" started-at="2022-05-12T20:20:37 IST" name="reachElementsMenu" finished-at="2022-05-12T20:21:29 IST" duration-ms="52694" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reachElementsMenu -->
-        <test-method signature="verifytable()[pri:4, instance:com.TCs.TC003@791f145a]" started-at="2022-05-10T19:30:41 IST" name="verifytable" finished-at="2022-05-10T19:30:48 IST" duration-ms="7403" status="PASS">
+        <test-method signature="verifyCheckBox()[pri:0, instance:com.TCs.TC004@60bd273d]" started-at="2022-05-12T20:21:29 IST" name="verifyCheckBox" finished-at="2022-05-12T20:21:31 IST" duration-ms="1220" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifytable -->
-        <test-method is-config="true" signature="reload()[pri:0, instance:com.TCs.TC003@791f145a]" started-at="2022-05-10T19:30:48 IST" name="reload" finished-at="2022-05-10T19:30:49 IST" duration-ms="631" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- reload -->
-        <test-method signature="AddDataInTable(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:5, instance:com.TCs.TC003@791f145a]" started-at="2022-05-10T19:30:50 IST" name="AddDataInTable" data-provider="data-provider" finished-at="2022-05-10T19:30:52 IST" duration-ms="2609" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Sundar]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[V]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[29]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[sundar@abc.co]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[30000]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[QA]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddDataInTable -->
-        <test-method signature="AddDataInTable(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:5, instance:com.TCs.TC003@791f145a]" started-at="2022-05-10T19:30:52 IST" name="AddDataInTable" data-provider="data-provider" finished-at="2022-05-10T19:30:55 IST" duration-ms="2568" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Ajithra]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[G]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[29]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[aju@abc.co]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[35000]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[QA]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddDataInTable -->
-        <test-method is-config="true" signature="reload()[pri:0, instance:com.TCs.TC003@791f145a]" started-at="2022-05-10T19:30:55 IST" name="reload" finished-at="2022-05-10T19:30:55 IST" duration-ms="569" status="PASS">
+        </test-method> <!-- verifyCheckBox -->
+        <test-method is-config="true" signature="reload()[pri:0, instance:com.TCs.TC004@60bd273d]" started-at="2022-05-12T20:21:31 IST" name="reload" finished-at="2022-05-12T20:22:13 IST" duration-ms="42811" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reload -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.TCs.TC003@791f145a]" started-at="2022-05-10T19:30:55 IST" name="tearDown" finished-at="2022-05-10T19:30:57 IST" duration-ms="1462" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.TCs.TC004@60bd273d]" started-at="2022-05-12T20:22:13 IST" name="tearDown" finished-at="2022-05-12T20:22:15 IST" duration-ms="1428" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.TCs.TC003 -->
+      </class> <!-- com.TCs.TC004 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
