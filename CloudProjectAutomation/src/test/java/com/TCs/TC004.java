@@ -6,7 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import com.BaseClass.BaseClass;
 
@@ -31,8 +34,18 @@ public class TC004 {
 		assertEquals(driver.findElement(By.xpath("//div[@class='main-header']")).getText(), "Elements");
 	}
 	
-	public void verifyCheckBox() {
+	@Test
+	public void verifyCheckBox() throws InterruptedException {
 
+		System.out.println("-------------Verify Check Boxes--------------");
+		driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[1]")).click();
+		WebElement CheckBox = driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[1]/div/ul/li[@id='item-1']"));
+		js.executeScript("arguments[0].scrollIntoView();", CheckBox);
+		CheckBox.click();
+		Thread.sleep(1000);
+		WebElement DrpDwn = driver.findElement(By.xpath("//button[@title='Toggle']"));
+		js.executeScript("arguments[0].scrollIntoView();", DrpDwn);
+		DrpDwn.click();
 		//button[@title="Toggle"] -- Drop down btn
 		//label[@for="tree-node-home"]/descendant::span[@class="rct-checkbox"] -- Home check box
 		//button[@title="Expand all"] -- Expand button
@@ -40,6 +53,17 @@ public class TC004 {
 		//label[@for="tree-node-notes"]/span[@class="rct-checkbox"] -- Notes check box
 		//label[@for="tree-node-documents"]/span[@class="rct-checkbox"] -- Documents check box
 		
+	}
+	
+	@AfterMethod(lastTimeOnly = true)
+	public void reload() {
+
+		driver.navigate().refresh();
+	}
+
+	@AfterTest
+	public void tearDown() {
+		bc.quitBrowser();
 	}
 
 }
