@@ -2,8 +2,6 @@ package com.TCs;
 
 import static org.testng.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -14,8 +12,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-
 import com.BaseClass.BaseClass;
 
 public class TC004 {
@@ -24,7 +20,6 @@ public class TC004 {
 	WebDriver driver;
 	JavascriptExecutor js;
 	String path = "C:\\Users\\2126765\\git\\CloudProjectAutomation_M\\CloudProjectAutomation\\src\\test\\java\\com\\DataDocs\\Test1.xlsx";
-	List<String> results = new ArrayList<String>();
 	
 	@BeforeTest
 	public void reachElementsMenu() throws Exception {
@@ -60,17 +55,16 @@ public class TC004 {
 		
 		//Initializing some web elements
 		WebElement cb_notes = driver.findElement(By.xpath("//label[@for='tree-node-notes']/span[@class='rct-checkbox']"));		
-		//WebElement cb_documents = driver.findElement(By.xpath("//label[@for='tree-node-documents']/span[@class='rct-checkbox']/*"));
+		//WebElement cb_documents = driver.findElement(By.xpath("//label[@for='tree-node-documents']/span[@class='rct-checkbox']"));
 
+		//Confirming if all the check boxes are enabled by verifying random check boxes
+		confirmResult("notes","");
 		
-		//Confirming if the elements are disabled after disabling the home check box
+		//Confirming if the other elements are disabled after disabling the home check box & enabling a random check box
 		clickElement(cb_home);
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 		clickElement(cb_notes);
-		confirmResult("notes");
-		//assertEquals(finalWord.getText(), "notes");
-		//label[@for="tree-node-desktop"]/span[@class="rct-checkbox"] -- Desktop drop down
-		//sa.assertAll();
+		confirmResult("notes", "documents");
 	}
 
 	private void clickElement(WebElement ele) throws InterruptedException {
@@ -79,12 +73,17 @@ public class TC004 {
 		Thread.sleep(1000);
 	}
 	
-	private void confirmResult(String expected) {
-		WebElement finalWord = driver.findElement(By.xpath("//div[@id='result']/span[@class='text-success']"));
-		js.executeScript("arguments[0].scrollIntoView();", finalWord);
-		results.add(finalWord.getText());
-		for(String s : results) {
-			if(s.contains(expected)) {
+	private void confirmResult(String expected, String unexpected) {
+		List<WebElement> finalWords = driver.findElements(By.xpath("//div[@id='result']/span[@class='text-success']"));
+		js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.id("result")));
+		for (WebElement e : finalWords) {
+			String result_text = e.getText();
+			if(result_text.contains(expected)) {
+				assertEquals(true, true);
+			}else {
+				System.out.println("Other results in the section at last are: " +e.getText());
+			}
+			if(!result_text.contains(unexpected) && unexpected != null) {
 				assertEquals(true, true);
 			}
 		}
