@@ -28,7 +28,7 @@ public class TC004 {
 		driver = bc.driver;
 		js = (JavascriptExecutor)driver;
 		System.out.println("Preparing the Elements Menu......");
-		WebElement EleMenu = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[1]/div/div[3]/h5"));
+		WebElement EleMenu = driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div/div[1]/div/div[3]/h5"));
 		js.executeScript("arguments[0].scrollIntoView();", EleMenu);
 		EleMenu.click();
 		Thread.sleep(2000);
