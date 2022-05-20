@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.TCs.TC004">
+      <class name="com.TCs.TC005">
         <methods>
           <include name="tearDown"/>
-          <include name="verifyCheckBox"/>
-          <include name="reachElementsMenu"/>
+          <include name="reachAlertsMenu"/>
+          <include name="verifyBrowserWindows"/>
           <include name="reload"/>
         </methods>
-      </class> <!-- com.TCs.TC004 -->
+      </class> <!-- com.TCs.TC005 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
