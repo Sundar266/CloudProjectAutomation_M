@@ -7,8 +7,8 @@
         <methods>
           <include name="tearDown"/>
           <include name="reachAlertsMenu"/>
-          <include name="verifyBrowserWindows"/>
           <include name="reload"/>
+          <include name="verifyFrames"/>
         </methods>
       </class> <!-- com.TCs.TC005 -->
     </classes>
