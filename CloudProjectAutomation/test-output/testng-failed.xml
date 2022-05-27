@@ -3,14 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.TCs.TC005">
+      <class name="com.TCs.TC006">
         <methods>
-          <include name="tearDown"/>
-          <include name="reachAlertsMenu"/>
-          <include name="reload"/>
-          <include name="verifyFrames"/>
+          <include name="verifyAccordian"/>
+          <include name="reachWidgetsMenu"/>
         </methods>
-      </class> <!-- com.TCs.TC005 -->
+      </class> <!-- com.TCs.TC006 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
