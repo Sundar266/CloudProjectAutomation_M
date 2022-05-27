@@ -147,7 +147,7 @@ public class TC005 {
 		t_alert.accept();
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2, enabled = false)
 	public void verifyFrames() throws Exception {
 		System.out.println("******Verifying browser frames*******");
 		WebElement alerts_windows_frames = driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[3]"));
@@ -167,6 +167,24 @@ public class TC005 {
 		Thread.sleep(4000);
 		System.out.println(driver.findElement(By.xpath("//h1[@id='sampleHeading']")).getText());
 	}
+	
+	@Test(priority = 3)
+	public void verifyNestedFrames() throws Exception {
+		System.out.println("******Verifying browser Nested frames*******");
+		WebElement alerts_windows_frames = driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[3]"));
+		elementClick(alerts_windows_frames);
+		WebElement nested_f_menu = driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[3]"
+				+ "/child::div/ul/li[@id='item-3']"));
+		elementClick(nested_f_menu);
+		System.out.println(driver.findElement(By.xpath("//div[@id='framesWrapper']/div")).getText());
+		js.executeScript("window.scrollBy(0,300)", "");
+		driver.switchTo().frame("frame1");
+		System.out.println(driver.findElement(By.tagName("body")).getText());
+		WebElement iframe2 = driver.findElement(By.xpath("//iframe[@srcdoc='<p>Child Iframe</p>']"));
+		driver.switchTo().frame(iframe2);
+		System.out.println(driver.findElement(By.tagName("body")).getText());
+		
+	}	
 
 	@AfterMethod(lastTimeOnly = true)
 	public void reload() {
