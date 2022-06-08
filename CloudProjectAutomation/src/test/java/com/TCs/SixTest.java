@@ -10,16 +10,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.BaseClass.BaseClass;
 
-public class TC006 {
+public class SixTest {
 
 	BaseClass bc;
 	WebDriver driver;
@@ -27,6 +27,7 @@ public class TC006 {
 	Robot robot;
 	String[] autoFillWord = {"Blac", "Re"};
 	WebDriverWait wait;
+	Actions act;
 
 	@BeforeTest
 	public void reachWidgetsMenu() throws Exception {
@@ -34,10 +35,11 @@ public class TC006 {
 		bc.launch();
 		driver = bc.driver;
 		js = (JavascriptExecutor)driver;
-		System.out.println("Preparing the Widgets......");
+		System.out.println("Preparing the Alerts, frame & Windows Menu......");
 		WebElement widgets_menu = driver.findElement(By.xpath("//*[@class='home-body']/div/div[4]/div/div[3]/h5"));
 		js.executeScript("arguments[0].scrollIntoView()", widgets_menu);
 		widgets_menu.click();
+		act = new Actions(driver);
 		robot = new Robot();
 		Thread.sleep(2000);
 		String text = driver.findElement(By.xpath("//div[@class='main-header']")).getText();
@@ -54,62 +56,34 @@ public class TC006 {
 		Thread.sleep(1000);
 	}
 
-	@Test(priority = 0, enabled = false)
-	public void verifyAccordian() throws Exception {
-		System.out.println("******Verifying Accordian*******");
-		WebElement widgets = driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[4]"));
-		elementClick(widgets);
-
-		WebElement accordian_menu = driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[4]"
-				+ "/child::div/ul/li[@id='item-0']"));
-		elementClick(accordian_menu);
-		Thread.sleep(1000);
-		//elementClick(driver.findElement(By.id("section1Heading")));
-		System.out.println(driver.findElement(By.xpath("//div[@class='collapse show']")).isDisplayed());
-		elementClick(driver.findElement(By.id("section2Heading")));
-		System.out.println(driver.findElement(By.xpath("//div[@class='collapse show']")).isDisplayed());
-		elementClick(driver.findElement(By.id("section3Heading")));
-		System.out.println(driver.findElement(By.xpath("//div[@class='collapse show']")).isDisplayed());
-	}
-
 	@Test(priority = 1)
 	public void verifyAutoComplete() throws Exception {
 		System.out.println("******Verifying Accordian*******");
 		WebElement widgets = driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[4]"));
 		elementClick(widgets);
 
-
 		WebElement accordian_menu = driver.findElement(By.xpath("//*[@id='app']/div/div/div[2]/div[1]/div/div/div[4]"
 				+ "/child::div/ul/li[@id='item-1']"));
 		elementClick(accordian_menu);
 		Thread.sleep(1000);
+		js.executeScript("window.scrollBy(0,200)", "");
 
 		//Checking the multi select box
-		WebElement multiText = driver.findElement(By.xpath("//div[@id='autoCompleteMultipleContainer']//div[contains(@class, 'value-container')]"));
-		elementClick(multiText);
-		System.out.println("Crossed 1");
+		
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='autoCompleteMultipleContainer']//div[contains(@class,'value-container')]"))).click();
+		//driver.findElement(By.xpath("//div[@id='autoCompleteMultipleContainer']//div[contains(@class,'value-container')]")).sendKeys("Blac");
+		//Thread.sleep(1000);
+		//robot.keyPress(KeyEvent.VK_ENTER);
+		//robot.keyRelease(KeyEvent.VK_ENTER);
+		WebElement element = driver.findElement(By.xpath("//div[@id='autoCompleteMultipleContainer']//div[contains(@class,'value-container')]"));
 		for(int i=0;i<autoFillWord.length;i++) {
-
-			multiText.sendKeys(autoFillWord[i]);
+			act.click(element).sendKeys(autoFillWord[i]).build().perform();
 			Thread.sleep(1000);
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
-		}
-		//Checking single select box
-		WebElement singleText = driver.findElement(By.xpath("//div[@id='autoCompleteSingleContainer']//div[contains(@class, 'value-container')]"));
-		elementClick(singleText);
-		for(int i=0;i<autoFillWord.length;i++) {
-			singleText.sendKeys(autoFillWord[i]);
-			Thread.sleep(1000);
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
-		}
+		}	
 	}
 
-	@AfterMethod(lastTimeOnly = true)
-	public void reload() {
-		driver.navigate().refresh();
-	}
 
 	@AfterTest
 	public void tearDown() {
